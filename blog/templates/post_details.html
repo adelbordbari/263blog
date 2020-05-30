@@ -2,14 +2,18 @@
 
 
 {% block content %}
-
+<br />
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author.first_name }}</small>
+<br />
+<p>
+    By: {{ post.author }} <br />
+    Date: {{ post.created_on }}
+</p>
 
 <br />
 <p>{{ post.body }}</p>
 <br />
 
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<a href="{% url 'home' %}" class="btn btn-dark">Back</a>
 
 {% endblock %}
