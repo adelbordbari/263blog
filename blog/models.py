@@ -6,6 +6,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE) # delete user -> delete their posts too
     body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
