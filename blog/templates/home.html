@@ -8,11 +8,11 @@
 
 <ul>
     {% for post in object_list %}
-        <!--pass post.pk to "details" in urls.py
-            and define the variable "the_url", e.g. localhost/post/1-->
-        {% url 'details' post.pk as the_url %}
+        <!--pass post.slug to "details" in urls.py
+            and define the variable "post_url", e.g. localhost/post/some-post-->
+        {% url 'details' post.slug as post_url %}
         <li>
-             <p>{{ post.author }} | {{ post.title }} ---> <a href="{{ the_url }}">Read</a></p>
+             <p>{{ post.author }} | {{ post.title }} ---> <a href="{{ post_url }}">Read</a></p>
         </li>
 
     {% endfor %}

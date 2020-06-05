@@ -16,4 +16,5 @@ class post_details_view(DetailView):
 class add_post_view(CreateView):
     model = Post
     template_name = "add_post.html"
-    fields = '__all__'  # ['title', ...]
+    fields =  ['title', 'author', 'body'] # '__all__' for all elements
+    prepopulated_fields = {'slug': ('title', )}
