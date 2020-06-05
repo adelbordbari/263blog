@@ -1,22 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Home
-{% endblock %}
-
 <!--start of what's gonna be injected to base-->
 {% block content %}
+
 <br />
 <h1>Posts:</h1> <br />
 
 <ul>
     {% for post in object_list %}
-    <!--pass post.pk to "details" in urls.py
+        <!--pass post.pk to "details" in urls.py
             and define the variable "the_url", e.g. localhost/post/1-->
-    {% url 'details' post.pk as the_url %}
-    <li>
-        <p>{{ post.author }} | {{ post.title }} ---> <a href="{{ the_url }}">Read</a></p>
-    </li>
+        {% url 'details' post.pk as the_url %}
+        <li>
+             <p>{{ post.author }} | {{ post.title }} ---> <a href="{{ the_url }}">Read</a></p>
+        </li>
 
     {% endfor %}
 </ul>

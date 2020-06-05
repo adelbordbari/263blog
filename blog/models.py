@@ -7,7 +7,6 @@ from django.urls import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
     # delete user -> delete their posts too
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
@@ -17,4 +16,4 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def get_absolute_url(self):
-        return reverse('details', args=(str(self.id))) # dst url. requires arg, pass in
+        return reverse('details', args=(str(self.pk)))
