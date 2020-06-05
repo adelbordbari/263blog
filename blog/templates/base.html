@@ -29,7 +29,7 @@
 					<a class="nav-link" href="https://getbootstrap.com/docs/4.0/components/alerts/">Bootstrap</a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="https://www.instagram.com/adel_bordbari/?hl=en">Instagram</a>
+					<a class="nav-link" href="{% url 'add_post_view' %}">Write</a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
@@ -45,14 +45,9 @@
 		{% block content %}
 		<!--inject from other pages-->
 		{% endblock %}
+		<br /><br /><br /><br />
 	</div>
 
-	<!--FOOTER-->
-	<footer class="page-footer font-small bg-dark text-white fixed-bottom">
-		<div class="footer-copyright text-center py-3">
-			Made with Django and depression - 2020
-		</div>
-	</footer>
 
 
 	<!-- Optional JavaScript -->

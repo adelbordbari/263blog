@@ -1,0 +1,19 @@
+<!--https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/#createview-->
+{% extends 'base.html' %}
+
+{% block title %}
+Add Post
+{% endblock %}
+
+
+{% block content %}
+<br />
+<h1>Add a new post</h1>
+<br /><br />
+
+<form method="POST"> {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Save</button>
+</form>
+
+{% endblock %}
