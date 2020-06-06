@@ -4,16 +4,21 @@
 {% block content %}
 
 <br />
-<h1>Posts:</h1> <br />
+<h1>Posts</h1> <br />
 
 <ul>
     {% for post in object_list %}
-        <!--pass post.slug to "details" in urls.py
+    <!--pass post.slug to "details" in urls.py
             and define the variable "post_url", e.g. localhost/post/some-post-->
-        {% url 'details' post.slug as post_url %}
-        <li>
-             <p>{{ post.author }} | {{ post.title }} ---> <a href="{{ post_url }}">Read</a></p>
-        </li>
+    {% url 'details' post.slug as read %}
+    {% url 'update_post' post.slug as edit %}
+    <li>
+        <p>
+            <!--{{ post.author }} |-->{{ post.title }} ->
+            <a href="{{ read }}">Read</a> |
+            <a href="{{ edit }}">(edit)</a>
+        </p>
+    </li>
 
     {% endfor %}
 </ul>
