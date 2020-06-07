@@ -12,11 +12,14 @@
             and define the variable "post_url", e.g. localhost/post/some-post-->
     {% url 'details' post.slug as read %}
     {% url 'update_post' post.slug as edit %}
+    {% url 'delete_post' post.slug as delete %}
+
     <li>
         <p>
             <!--{{ post.author }} |-->{{ post.title }} ->
             <a href="{{ read }}">Read</a> |
-            <a href="{{ edit }}">(edit)</a>
+            <a href="{{ edit }}">edit</a> |
+            <a href="{{ delete }}">delete</a>
         </p>
     </li>
 
