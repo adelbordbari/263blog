@@ -22,21 +22,22 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="{% url 'home' %}">Home</a>
 				</li>
+				{% if user.is_authenticated %}
 				<li class="nav-item active">
 					<a class="nav-link" href="{% url 'add_post' %}">Write</a>
 				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+				</li>
+				{% else %}
 				<li class="nav-item active">
 					<a class="nav-link" href="{% url 'register' %}">Register</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="{% url 'login' %}">Login</a>
 				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="https://icons.getbootstrap.com/">Icons</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="https://www.instagram.com/adel_bordbari/?hl=en">Instagram</a>
-				</li>
+				{% endif %}
+
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search" placeholder="Enter text">

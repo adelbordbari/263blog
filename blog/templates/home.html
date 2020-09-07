@@ -17,11 +17,14 @@
     <li>
         <p>
             <!--{{ post.author }} |-->{{ post.title }} ->
-            <a href="{{ read }}">Read</a> |
-            <a href="{{ edit }}">edit</a> |
-            <a href="{{ delete }}">delete</a>
+            <a href="{{ read }}">Read</a>
+            {% if user.is_authenticated %}
+            <a href="{{ edit }}"> | edit</a>
+            <a href="{{ delete }}"> | delete</a>
+            {% endif %}
         </p>
     </li>
+    
 
     {% endfor %}
 </ul>
