@@ -26,7 +26,6 @@ cryptg==0.2.post1
 cryptography==2.1.4
 cycler==0.10.0
 decorator==4.4.2
-defer==1.0.6
 Deprecated==1.2.10
 distro-info==0.18
 Django==3.0.8
