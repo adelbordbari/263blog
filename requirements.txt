@@ -4,3 +4,4 @@ SQLAlchemy
 PyYAML
 django-admin
 gunicorn
+django-heroku
