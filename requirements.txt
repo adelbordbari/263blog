@@ -3,3 +3,4 @@ beautifulsoup4
 SQLAlchemy
 PyYAML
 django-admin
+gunicorn
