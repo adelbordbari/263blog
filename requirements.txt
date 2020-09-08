@@ -1,5 +1,5 @@
 Django
-BeautifulSoup
+beautifulsoup4
 SQLAlchemy
 PyYAML
 django-admin
