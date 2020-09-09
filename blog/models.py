@@ -6,6 +6,19 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100, default='unknown')
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        # in order  go to the url named 'details' and pass in self.pk
+        # return reverse('details', kwargs={'slugx': self.slug})
+        # in order to redirect to home page after writing a new post
+        return reverse('home')
+
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
@@ -18,7 +31,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         # in order  go to the url named 'details' and pass in self.pk
-        # return reverse('details', kwargs={'slug': self.slug})
+        # return reverse('details', kwargs={'slugx': self.slug})
         # in order to redirect to home page after writing a new post
         return reverse('home')
 
