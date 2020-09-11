@@ -1,6 +1,8 @@
 <!--https://docs.djangoproject.com/en/3.0/ref/class-based-views/generic-editing/#createview-->
-{% extends 'base.html' %} {% block title %} Add Category {% endblock %} {% block
-content %} {% if user.is_authenticated %}
+{% extends 'base.html' %}
+{% block title %} Add Category {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
 <br />
 <h1>Add a new category</h1>
 <br />
@@ -23,4 +25,5 @@ content %} {% if user.is_authenticated %}
 {% endif %} {% else %}
 <h2>Access denied</h2>
 
-{% endif %} {% endblock %}
+{% endif %}
+{% endblock %}
