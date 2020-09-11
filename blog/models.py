@@ -23,6 +23,7 @@ class Post(models.Model):
     category = models.CharField(max_length=100, default='dump')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    category = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
