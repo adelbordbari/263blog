@@ -1,9 +1,8 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from .forms import *
-
 
 class post_list_view(ListView):
     model = Post
@@ -24,6 +23,15 @@ class add_post_view(CreateView):
     form_class = PostForm
     # fields = ['author', 'title', 'body']  # '__all__' for all elements
 
+class add_category_view(CreateView):
+    model = Category
+    template_name = "add_category.html"
+    fields = '__all__'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #name the context, then say what attr to append into it
+        context['categories'] = Category.objects.all().values('name')
+        return context
 
 class update_post_view(UpdateView):
     model = Post

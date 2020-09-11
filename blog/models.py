@@ -7,15 +7,12 @@ from django.template.defaultfilters import slugify
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, default='unknown')
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        # in order  go to the url named 'details' and pass in self.pk
-        # return reverse('details', kwargs={'slugx': self.slug})
-        # in order to redirect to home page after writing a new post
         return reverse('home')
 
 
@@ -23,6 +20,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.CharField(max_length=100, default='dump')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 

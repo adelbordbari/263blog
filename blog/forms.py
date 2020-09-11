@@ -1,6 +1,9 @@
 from django import forms
-from .models import Post
+from .models import Post, Category
 
+
+choices = Category.objects.all().values_list('name', 'name')
+choice_list = [item for item in choices]
 
 class PostForm(forms.ModelForm):  # to create form fields
     '''
@@ -9,28 +12,27 @@ class PostForm(forms.ModelForm):  # to create form fields
     '''
     class Meta:
         model = Post
-        fields = ['title', 'slug', 'author', 'body']
+        fields = ('title', 'slug', 'author', 'category', 'body')
         widgets = {  # add the component attrs, all are text inputs except author
             # pass any atr:val as div items based on bootstrap classes
             # also tweak the form in html and wrap it in a <div class="form-group">
             'title': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Enter a title for your post...',
-            }),
+                'class': 'form-control'}),
 
             'slug': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter a short name for your post...',
-            }),
+                'placeholder': 'Enter a short name for your post...' }),
 
             'author': forms.Select(attrs={
-                'class': 'form-control',
-            }),
+                'class': 'form-control' }),
+
+            'category': forms.Select(attrs={'class': 'form-control',
+                                            'placeholder': 'Enter a category...'},
+                                     choices=choice_list,),
 
             'body': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Write about anything...',
-            }),
+                'placeholder': 'Write about anything...', }),
         }
 
 
