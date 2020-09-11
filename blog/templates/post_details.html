@@ -12,7 +12,12 @@
 
 <br />
 <p>{{ post.body }}</p>
+
 <br />
+{% for tag in post.tags.all %}
+<span class="badge badge-pill badge-info">#{{ tag }}</span>
+{% endfor %}
+<br /><br />
 
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
