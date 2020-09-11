@@ -30,12 +30,11 @@ class add_category_view(CreateView):
     model = Category
     template_name = "add_category.html"
     fields = '__all__'
-
-    '''def get_context_data(self, *args, **kwargs):
+    def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         # name the context, then say what attr to append into it
         context['categories'] = Category.objects.all().values('name')
-        return context'''
+        return context
 
 
 class update_post_view(UpdateView):
