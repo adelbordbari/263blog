@@ -3,4 +3,3 @@
 # Name of your IDE
 .vscode
 *pyc
-db.sqlite3
