@@ -1,9 +1,6 @@
 from django import forms
-from .models import Post, Category
+from .models import Post
 
-
-choices = Category.objects.all().values_list('name', 'name')
-choice_list = [item for item in choices]
 
 class PostForm(forms.ModelForm):  # to create form fields
     '''
@@ -21,15 +18,11 @@ class PostForm(forms.ModelForm):  # to create form fields
 
             'slug': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter a short name for your post...' }),
+                'placeholder': 'Enter a short name for your post...'}),
 
             'author': forms.Select(attrs={
-                'class': 'form-control' }),
-
-            'category': forms.Select(attrs={'class': 'form-control',
-                                            'placeholder': 'Enter a category...'},
-                                     choices=choice_list,),
-
+                'class': 'form-control'}),
+                
             'body': forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Write about anything...', }),

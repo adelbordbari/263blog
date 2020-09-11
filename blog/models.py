@@ -5,17 +5,6 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 
-
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('home')
-
-
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
@@ -23,7 +12,6 @@ class Post(models.Model):
     category = models.CharField(max_length=100, default='dump')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
