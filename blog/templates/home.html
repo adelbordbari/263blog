@@ -10,9 +10,9 @@
     {% for post in object_list %}
     <!--pass post.slug to "details" in urls.py
             and define the variable "post_url", e.g. localhost/post/some-post-->
-    {% url 'details' post.slug as read %}
-    {% url 'update_post' post.slug as edit %}
-    {% url 'delete_post' post.slug as delete %}
+    {% url 'details' post.id as read %}
+    {% url 'update_post' post.id as edit %}
+    {% url 'delete_post' post.id as delete %}
 
     <li>
         <p>

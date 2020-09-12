@@ -1,9 +1,10 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import *
 from taggit.models import Tag
+from django.http import HttpResponseRedirect
 
 
 
@@ -26,15 +27,6 @@ class add_post_view(CreateView):
     form_class = PostForm
     # fields = ['author', 'title', 'body']  # '__all__' for all elements
 
-def tagged(request, slug):
-    tag = get_object_or_404(Tag, slug=slug)
-    common_tags = Post.tags.most_common()[:4]
-    posts = Post.objects.filter(tags=tag)
-    context = {
-        'tag':tag,
-        'common_tags':common_tags,
-        'posts':posts,}
-    return render(request, 'home.html', context)
 
 class update_post_view(UpdateView):
     model = Post
@@ -46,3 +38,22 @@ class delete_post_view(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+def tagged(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    common_tags = Post.tags.most_common()[:4]
+    posts = Post.objects.filter(tags=tag)
+    context = {
+        'tag':tag,
+        'common_tags':common_tags,
+        'posts':posts,}
+    return render(request, 'home.html', context)
+
+
+def like_view(request, pk):
+    # we named it "post_id" the id in "post_details" template
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    # pass the user to the like. a user>liked post with id=3 thing
+    post.likes.add(request.user)
+    # use the url in reverse, url called "details"
+    return HttpResponseRedirect(reverse('details', args=[str(pk)]))
