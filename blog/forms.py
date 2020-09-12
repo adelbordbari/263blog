@@ -14,18 +14,23 @@ class PostForm(forms.ModelForm):  # to create form fields
             # pass any atr:val as div items based on bootstrap classes
             # also tweak the form in html and wrap it in a <div class="form-group">
             'title': forms.TextInput(attrs={
-                'class': 'form-control'}),
+                'class': 'form-control',
+                'placeholder': 'Post title'}),
 
             'slug': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter a short name for your post...'}),
+                'placeholder': 'A short name'}),
 
-            'author': forms.Select(attrs={
-                'class': 'form-control'}),
+            'author': forms.TextInput(attrs={
+                'class': 'form-control',
+                'value': '',
+                'type': 'hidden',
+                #to identify with css
+                'id': 'author_input'}),
                 
             'body': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Write about anything...', }),
+                'placeholder': 'Start writing...', }),
         }
 
 

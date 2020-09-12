@@ -17,10 +17,11 @@
     <li>
         <p>
             <!--{{ post.author }} |-->{{ post.title }} ->
-            <a href="{{ read }}">Read</a> | 
-            {% if user.is_authenticated %}
-            <a href="{{ edit }}">edit</a> | 
-            <a href="{{ delete }}">delete</a>
+            <a href="{{ read }}">Read</a>
+            <!-- if user is logged and owner, or is admin-->
+            {% if user.is_authenticated and user.id == post.author.id or user.id == 1 %} | 
+                <a href="{{ edit }}">edit</a> | 
+                <a href="{{ delete }}">delete</a>
             {% endif %}
         </p>
         <div style="display:flex">

@@ -17,9 +17,14 @@
         <button class="btn btn-primary">Save</button>
     </form>
 </div>
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("author_input").value = name;
+</script>
+
 {% else %}
 <h2>Access denied</h2>
 
 {% endif %}
-
 {% endblock %}
