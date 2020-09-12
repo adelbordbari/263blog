@@ -38,8 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'uhf',
+]
+THIRD_PARTY_APPS = [
     'taggit',
 ]
+
+#all the installed apps
+INSTALLED_APPS = INSTALLED_APPS + THIRD_PARTY_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -107,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
