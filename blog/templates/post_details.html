@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
-
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <br />
 <h1>{{ post.title }}</h1>
 <br />
 <p>
-    By: {{ post.author }} <br />
-    Date: {{ post.created_on }}
+  By: {{ post.author }} <br />
+  Date: {{ post.created_on }}
 </p>
 
 <br />
@@ -22,11 +19,40 @@
 <!-- like button, as a submit form -->
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 <br /><br />
-<form action="{% url 'like_post' post.id %}" method="POST">
-    {% csrf_token %}
-    <!-- pass value=post.id to like the very post by backend -->
-    <button type="submit", name="post_id", value="{{ post.id }}",
-    class="badge badge-pill badge-info">like</button> - {{ total_likes }} likes
-</form>
+<div></div>
 
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">{{ total_likes }}</h5>
+    <form action="{% url 'like_post' post.id %}" method="POST">
+      {% csrf_token %}
+      <!-- pass value=post.id to like the very post by backend -->
+      <button
+        type="submit"
+        ,
+        name="post_id"
+        ,
+        value="{{ post.id }}"
+        ,
+        class="badge badge-pill badge-info"
+      >
+        🔼 upvote
+      </button>
+    </form>
+    <form action="{% url 'dislike_post' post.id %}" method="POST">
+      {% csrf_token %}
+      <button
+        type="submit"
+        ,
+        name="post_id"
+        ,
+        value="{{ post.id }}"
+        ,
+        class="badge badge-pill badge-info"
+      >
+        🔽 downvote
+      </button>
+    </form>
+  </div>
+</div>
 {% endblock %}

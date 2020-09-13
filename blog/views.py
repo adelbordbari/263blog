@@ -65,3 +65,8 @@ def like_view(request, pk):
     post.likes.add(request.user)
     # use the url in reverse, url called "details"
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
+
+def dislike_view(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.remove(request.user)
+    return HttpResponseRedirect(reverse('details', args=[str(pk)]))
