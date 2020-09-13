@@ -34,3 +34,6 @@ class Post(models.Model):
                     candid += '_re' + str(i+1)
             self.slug = slugify(self.title)
         return super(Post, self).save(*args, **kwargs)
+
+    def total_likes(self):
+        return self.likes.count()

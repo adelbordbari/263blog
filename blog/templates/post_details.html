@@ -26,7 +26,7 @@
     {% csrf_token %}
     <!-- pass value=post.id to like the very post by backend -->
     <button type="submit", name="post_id", value="{{ post.id }}",
-    class="badge badge-pill badge-info">like</button>
+    class="badge badge-pill badge-info">like</button> - {{ total_likes }} likes
 </form>
 
 {% endblock %}

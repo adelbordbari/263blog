@@ -17,6 +17,14 @@ class post_list_view(ListView):
 class post_details_view(DetailView):
     model = Post
     template_name = 'post_details.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super(post_details_view, self).get_context_data(*args)
+        # picks the post with id=pk 
+        addressed_post = get_object_or_404(Post, id=self.kwargs['pk'])
+        # check how many likes it has
+        total_likes = addressed_post.total_likes()
+        context["total_likes"] = total_likes
+        return context
 
 
 class add_post_view(CreateView):
