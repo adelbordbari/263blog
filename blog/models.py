@@ -12,9 +12,9 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = TaggableManager()
+    likes = models.ManyToManyField(User, related_name='blog_post')
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name='blog_post')
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
