@@ -8,17 +8,17 @@ from django.http import HttpResponseRedirect
 
 
 
-class post_list_view(ListView):
+class Post_List_View(ListView):
     model = Post
     template_name = 'home.html'
     ordering = ['-created_on']
 
 
-class post_details_view(DetailView):
+class Post_Details_View(DetailView):
     model = Post
     template_name = 'post_details.html'
     def get_context_data(self, *args, **kwargs):
-        context = super(post_details_view, self).get_context_data(*args)
+        context = super(Post_Details_View, self).get_context_data(*args)
         # picks the post with id=pk 
         addressed_post = get_object_or_404(Post, id=self.kwargs['pk'])
         # check how many likes it has
@@ -27,7 +27,7 @@ class post_details_view(DetailView):
         return context
 
 
-class add_post_view(CreateView):
+class Add_Post_View(CreateView):
     model = Post
     template_name = "add_post.html"
     # if a form is being used, it needs to be mentioned. the line below is added later
@@ -36,13 +36,13 @@ class add_post_view(CreateView):
     # fields = ['author', 'title', 'body']  # '__all__' for all elements
 
 
-class update_post_view(UpdateView):
+class Update_Post_View(UpdateView):
     model = Post
     template_name = 'update_post.html'
     form_class = EditForm
 
 
-class delete_post_view(DeleteView):
+class Delete_Post_View(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
