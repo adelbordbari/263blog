@@ -11,11 +11,12 @@ from ckeditor.fields import RichTextField
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
+    header = models.ImageField(blank=True, null=True, upload_to='images/')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = TaggableManager()
     likes = models.ManyToManyField(User, related_name='blog_post')
     body = RichTextField(blank=True, null=True)
-    #body = models.TextField()
+    #body = models.TextField() #plain body text
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):  # to create form fields
     '''
     class Meta:
         model = Post
-        fields = ('title', 'slug', 'author', 'tags', 'body')
+        fields = ('title', 'slug', 'author', 'tags', 'header', 'body')
         widgets = {  # add the component attrs, all are text inputs except author
             # pass any atr:val as div items based on bootstrap classes
             # also tweak the form in html and wrap it in a <div class="form-group">

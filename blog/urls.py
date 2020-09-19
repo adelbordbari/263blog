@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import *
-from uhf.views import *
+from uhf.views import Signup_View
 
 urlpatterns = [
     path('', Post_List_View.as_view(), name='home'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('register/', Signup_View.as_view(), name='register'),
     path('like/<int:pk>', like_view, name='like_post'),
     path('dislike/<int:pk>', dislike_view, name='dislike_post'),
+    path('tag/<slug:slug>/', tagged, name="tagged"),
 ]

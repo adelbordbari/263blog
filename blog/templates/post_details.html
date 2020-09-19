@@ -8,7 +8,8 @@
 </p>
 
 <br />
-<p>{{ post.body | safe }}</p> <!-- safe is to show stylized text-->
+<img src="{{ post.header }}">
+{{ post.body | safe }} <!-- safe is to show stylized text-->
 
 <br />
 {% for tag in post.tags.all %}
