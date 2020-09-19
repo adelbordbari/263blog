@@ -1,3 +1,5 @@
 *.sqlite3
 .vscode
 *pyc
+images/
+media/images
