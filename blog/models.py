@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.template.defaultfilters import slugify
 from taggit.managers import TaggableManager
 
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -13,7 +14,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = TaggableManager()
     likes = models.ManyToManyField(User, related_name='blog_post')
-    body = models.TextField()
+    body = RichTextField(blank=True, null=True)
+    #body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

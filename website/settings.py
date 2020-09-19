@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'uhf',
+    'ckeditor',
 ]
 THIRD_PARTY_APPS = [
     'taggit',

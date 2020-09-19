@@ -23,12 +23,13 @@
                 <a href="{{ edit }}">edit</a> | 
                 <a href="{{ delete }}">delete</a>
             {% endif %}
+            <div style="display:flex">
+                {% for tag in post.tags.all %}
+                <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-pill badge-info">#{{ tag }}</a>
+                {% endfor %}
+            </div>
         </p>
-        <div style="display:flex">
-            {% for tag in post.tags.all %}
-            <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-pill badge-info">#{{ tag }}</a>
-            {% endfor %}
-        </div>
+        <hr />
     </li>
     
 
