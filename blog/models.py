@@ -12,7 +12,7 @@ from ckeditor.fields import RichTextField
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
-    header = models.ImageField(blank=True, null=True, upload_to="images/")
+    header = models.ImageField(blank=True, null=True, upload_to="ckimages/")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = TaggableManager()
     likes = models.ManyToManyField(User, related_name="blog_post")
