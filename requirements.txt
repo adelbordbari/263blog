@@ -8,3 +8,5 @@ django-heroku==0.3.1
 pipenv
 django-taggit
 django-ckeditor
+whitenoise
+django-environ
